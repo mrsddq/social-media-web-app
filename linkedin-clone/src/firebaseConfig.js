@@ -1,17 +1,12 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCQpTCgVVuvkiLYBax8kTx_fv8iNc0s59o",
-  authDomain: "linkedin-dbms.firebaseapp.com",
-  projectId: "linkedin-dbms",
-  storageBucket: "linkedin-dbms.appspot.com",
-  messagingSenderId: "144472932506",
-  appId: "1:144472932506:web:a78beb75861c330255df23"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "demo-api-key",
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "demo.firebaseapp.com",
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "demo-project",
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "demo.appspot.com",
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "000000000000",
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:000000000000:web:demo"
 };
 
-// Initialize Firebase
 export const app = initializeApp(firebaseConfig);

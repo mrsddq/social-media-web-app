@@ -2,16 +2,18 @@
 
 ## Current State
 
-- Vite React app scaffold
-- Firebase integration direction
-- social-feed project concept
+- Vite React app with a completed local feed UI
+- profile card and stats
+- create-post composer
+- local reaction updates
+- Firebase configuration prepared through environment variables
 
 ## Next Product Features
 
 - authentication flow
-- post composer
-- feed rendering
-- profile card
+- Firestore-backed posts
+- comment threads
+- profile editing
 - Firebase security rules
 - deployed demo link
 
