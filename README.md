@@ -1,11 +1,35 @@
-# Social-Media-Web-App
-npm create vite@latest
-select "React"
-select "JavaScript"
+# Social Media Web App
 
-make a project on firebase - linkedin
-select "</>" and given project nickname
-npm install firebase
-copy the below cokde and save it in file named as "firebaseConfig.js"
+A Vite React social media starter app located in the `linkedin-clone/` folder.
 
+## Structure
+
+```text
+linkedin-clone/
+  public/
+  src/
+  package.json
+  vite.config.js
+```
+
+## Setup
+
+```bash
+cd linkedin-clone
+npm install
 npm run dev
+```
+
+## Environment
+
+Firebase configuration belongs in `linkedin-clone/src/firebaseConfig.js`. Keep secrets and environment-specific values out of Git.
+
+## Status
+
+Baseline structure is complete:
+
+- Vite React app folder
+- Firebase configuration placeholder pattern
+- package metadata
+- project README
+- root `.gitignore`
