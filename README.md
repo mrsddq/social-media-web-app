@@ -24,12 +24,12 @@ npm run dev
 
 Firebase configuration belongs in `linkedin-clone/src/firebaseConfig.js`. Keep secrets and environment-specific values out of Git.
 
+## Quality Signals
+
+- GitHub Actions build workflow
+- product roadmap in [docs/product-roadmap.md](docs/product-roadmap.md)
+- Vite build pipeline
+
 ## Status
 
-Baseline structure is complete:
-
-- Vite React app folder
-- Firebase configuration placeholder pattern
-- package metadata
-- project README
-- root `.gitignore`
+Learning project with a clear social app direction. It needs screenshots, Firebase environment docs, and a deployed demo before it becomes portfolio-polished.
