@@ -6,3 +6,11 @@ build/
 .idea/
 .vscode/
 *.log
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+coverage/
+reports/
+outputs/
