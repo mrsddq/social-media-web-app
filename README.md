@@ -28,6 +28,7 @@ Firebase configuration is read from Vite environment variables in `linkedin-clon
 
 - GitHub Actions build workflow
 - product roadmap in [docs/product-roadmap.md](docs/product-roadmap.md)
+- Firebase upgrade plan in [docs/FIREBASE_UPGRADE_PLAN.md](docs/FIREBASE_UPGRADE_PLAN.md)
 - Vite build pipeline
 - local feed state, composer, profile card, and reaction updates
 
