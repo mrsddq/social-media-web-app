@@ -1,7 +1,7 @@
-﻿.PHONY: verify clean
-
+.PHONY: install verify clean
+install:
+	cd linkedin-clone && npm ci
 verify:
-	git status --short
-
+	cd linkedin-clone && npm test && npm run build
 clean:
-	git status --short
+	rm -rf linkedin-clone/dist

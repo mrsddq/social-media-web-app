@@ -1,26 +1,28 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState, useReducer } from 'react'
 import './App.css'
+import { feedReducer, MAX_POST_LENGTH } from './feed'
 
 const INITIAL_POSTS = [
   {
     id: 1,
-    author: 'Laraib Qureshi',
-    role: 'AI/ML and Cloud Learner',
-    body: 'Documented a small MLOps pipeline today: data contract, model card, Docker build, and CI checks.',
+    author: 'Laraib Ahmad Siddiqui',
+    role: 'Demo profile',
+    body: 'Example project update: data contract, model card, Docker build, and CI checks.',
     reactions: 18,
   },
   {
     id: 2,
     author: 'Project Notes',
     role: 'Portfolio Tracker',
-    body: 'Next proof target: add screenshots, metrics, and short demo commands to the top computer vision repos.',
+    body: 'Example portfolio note: add screenshots, metrics, and short demo commands to the top computer vision repos.',
     reactions: 11,
   },
 ]
 
 function App() {
   const [draft, setDraft] = useState('')
-  const [posts, setPosts] = useState(INITIAL_POSTS)
+  const [posts, dispatch] = useReducer(feedReducer, INITIAL_POSTS)
+  const [message, setMessage] = useState('')
 
   const stats = useMemo(() => {
     return {
@@ -33,19 +35,16 @@ function App() {
     event.preventDefault()
     const body = draft.trim()
     if (!body) {
+      setMessage('Write a post before publishing.')
       return
     }
 
-    setPosts([
-      {
-        id: Date.now(),
-        author: 'Laraib Qureshi',
-        role: 'Portfolio Builder',
-        body,
-        reactions: 0,
-      },
-      ...posts,
-    ])
+    if (body.length > MAX_POST_LENGTH) {
+      setMessage(`Posts must be ${MAX_POST_LENGTH} characters or fewer.`)
+      return
+    }
+    dispatch({ type: 'publish', body, id: crypto.randomUUID() })
+    setMessage('Post added to this local demo feed.')
     setDraft('')
   }
 
@@ -53,8 +52,8 @@ function App() {
     <div className='appShell'>
       <aside className='profilePanel'>
         <div className='profilePanel__cover'></div>
-        <div className='profilePanel__avatar'>LQ</div>
-        <h1>Laraib Qureshi</h1>
+        <div className='profilePanel__avatar'>LAS</div>
+        <h1>Laraib Ahmad Siddiqui</h1>
         <p>Building AI, MLOps, cloud, and frontend projects in public.</p>
         <dl>
           <div>
@@ -77,8 +76,11 @@ function App() {
             placeholder='Share a project update'
             rows='4'
             value={draft}
+            aria-describedby='post-guidance'
           />
+          <p id='post-guidance'>{draft.trim().length}/{MAX_POST_LENGTH} characters · Stored in this tab only</p>
           <button type='submit'>Publish</button>
+          <p role='status'>{message}</p>
         </form>
 
         {posts.map((post) => (
@@ -95,13 +97,11 @@ function App() {
               <span>{post.reactions} reactions</span>
               <button
                 type='button'
-                onClick={() =>
-                  setPosts(posts.map((item) =>
-                    item.id === post.id ? { ...item, reactions: item.reactions + 1 } : item
-                  ))
-                }
+                aria-pressed={Boolean(post.supported)}
+                aria-label={`Support post by ${post.author}`}
+                onClick={() => dispatch({ type: 'toggle-support', id: post.id })}
               >
-                Support
+                {post.supported ? 'Supported' : 'Support'}
               </button>
             </footer>
           </article>
