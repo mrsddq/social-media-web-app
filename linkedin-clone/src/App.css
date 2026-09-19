@@ -154,3 +154,6 @@
     grid-template-columns: 1fr;
   }
 }
+
+.post__body { overflow-wrap: anywhere; white-space: pre-wrap; }
+.post button[aria-pressed='true'] { background: #126747; }
